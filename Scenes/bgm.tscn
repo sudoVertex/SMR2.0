@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bapvt4kx5t5jc"]
+
+[ext_resource type="AudioStream" uid="uid://dqmblvh1yr41a" path="res://Assets/Sound/SuperMario64MainTheme.mp3" id="1_2kasm"]
+
+[node name="BGM" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_2kasm")
+autoplay = true
+bus = &"Music"
+parameters/looping = true

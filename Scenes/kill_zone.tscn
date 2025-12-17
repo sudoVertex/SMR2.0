@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2xk517xfoakm"]
+
+[ext_resource type="Script" uid="uid://wupoj10hnfxr" path="res://Scripts/kill_zone.gd" id="1_d6013"]
+[ext_resource type="AudioStream" uid="uid://dk2tklhfmbdjl" path="res://Assets/Sound/MarioDeath.mp3" id="2_byrjq"]
+
+[node name="KillZone" type="Area2D"]
+script = ExtResource("1_d6013")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("2_byrjq")
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

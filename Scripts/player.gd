@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var JUMP_FORCE :int =  700
 @export var GRAVITY :int = 900
 @export var AnSprite :AnimatedSprite2D
+@export var JumpSFX: AudioStreamPlayer2D
 
 func _physics_process(delta: float) -> void:
 	
@@ -37,7 +38,7 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
 		velocity.y -= JUMP_FORCE
-		
+		JumpSFX.play()
 		
 		#$AnSprite.play("Jump")
 	
