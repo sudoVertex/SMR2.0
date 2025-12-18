@@ -1,12 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmc1svqn6i1nt"]
+[gd_scene load_steps=6 format=3 uid="uid://dmc1svqn6i1nt"]
 
 [ext_resource type="PackedScene" uid="uid://d2xk517xfoakm" path="res://Scenes/kill_zone.tscn" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://bxm8r2c1k1njb" path="res://Scenes/player.tscn" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://77ae73nyahv3" path="res://Scenes/coin.tscn" id="3_8gbba"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8gbba"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
-size = Vector2(1021, 143)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bo1nx"]
+size = Vector2(1026.9731, 140.92154)
 
 [node name="Main" type="Node2D"]
 
@@ -34,5 +35,14 @@ color = Color(0.74138474, 0.7413847, 0.74138457, 1)
 polygon = PackedVector2Array(102, 152, 1125, 151, 1125, 297, 99, 297)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-2.1962357, 1.9464455)
-shape = SubResource("RectangleShape2D_0xm2m")
+position = Vector2(0.6048279, 2.721672)
+shape = SubResource("RectangleShape2D_bo1nx")
+
+[node name="Coin" parent="." instance=ExtResource("3_8gbba")]
+position = Vector2(791, -24)
+
+[node name="Coin2" parent="." instance=ExtResource("3_8gbba")]
+position = Vector2(996, -23)
+
+[node name="Coin3" parent="." instance=ExtResource("3_8gbba")]
+position = Vector2(1155, -34)

@@ -18,6 +18,7 @@ config/icon="res://Assets/icon.svg"
 [autoload]
 
 BackgroundMusic="*res://Scenes/bgm.tscn"
+GameManager="*res://Scripts/GameManager.gd"
 
 [input]
 
