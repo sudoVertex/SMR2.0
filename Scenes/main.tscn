@@ -1,13 +1,90 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmc1svqn6i1nt"]
+[gd_scene load_steps=13 format=3 uid="uid://dmc1svqn6i1nt"]
 
 [ext_resource type="PackedScene" uid="uid://d2xk517xfoakm" path="res://Scenes/kill_zone.tscn" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://bxm8r2c1k1njb" path="res://Scenes/player.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://77ae73nyahv3" path="res://Scenes/coin.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://cmeq4p23xpteh" path="res://Scenes/platform.tscn" id="4_jjvhh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8gbba"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bo1nx"]
 size = Vector2(1026.9731, 140.92154)
+
+[sub_resource type="Animation" id="Animation_21xkr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-62, -177)]
+}
+
+[sub_resource type="Animation" id="Animation_kry3j"]
+resource_name = "up down"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-62, -177), Vector2(-62, 98)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6bp64"]
+_data = {
+&"RESET": SubResource("Animation_21xkr"),
+&"up down": SubResource("Animation_kry3j")
+}
+
+[sub_resource type="Animation" id="Animation_jjvhh"]
+resource_name = "left right"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-26.000061, -371), Vector2(758, -370.99997)]
+}
+
+[sub_resource type="Animation" id="Animation_6bp64"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-26.000061, -371)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_344ge"]
+_data = {
+&"RESET": SubResource("Animation_6bp64"),
+&"left right": SubResource("Animation_jjvhh")
+}
 
 [node name="Main" type="Node2D"]
 
@@ -31,7 +108,7 @@ scale = Vector2(1.6534023, 1.6534023)
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
 position = Vector2(-613.6962, -220.55356)
-color = Color(0.74138474, 0.7413847, 0.74138457, 1)
+color = Color(0.22743902, 0.8887781, 0, 1)
 polygon = PackedVector2Array(102, 152, 1125, 151, 1125, 297, 99, 297)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
@@ -46,3 +123,27 @@ position = Vector2(996, -23)
 
 [node name="Coin3" parent="." instance=ExtResource("3_8gbba")]
 position = Vector2(1155, -34)
+
+[node name="MovingPlatform" parent="." instance=ExtResource("4_jjvhh")]
+position = Vector2(-62, -177)
+scale = Vector2(2.9303815, 1.492648)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatform"]
+libraries = {
+&"": SubResource("AnimationLibrary_6bp64")
+}
+autoplay = "up down"
+
+[node name="Platform" parent="." instance=ExtResource("4_jjvhh")]
+position = Vector2(809, -141.99998)
+scale = Vector2(2.6310205, 1.3580434)
+
+[node name="Platform2" parent="." instance=ExtResource("4_jjvhh")]
+position = Vector2(-26.000061, -371)
+scale = Vector2(3.99561, 1.6534023)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform2"]
+libraries = {
+&"": SubResource("AnimationLibrary_344ge")
+}
+autoplay = "left right"

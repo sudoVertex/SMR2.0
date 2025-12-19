@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 @export var SPEED :int = 150
-@export var JUMP_FORCE :int =  700
-@export var GRAVITY :int = 900
+@export var JUMP_FORCE :int =  1100
+@export var GRAVITY :int = 1500
 @export var AnSprite :AnimatedSprite2D
 @export var JumpSFX: AudioStreamPlayer2D
 
