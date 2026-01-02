@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmfvh8jx2ae1y"]
+
+[ext_resource type="Script" uid="uid://d2vi4gstaclo" path="res://Scenes/castle.gd" id="1_ayoda"]
+[ext_resource type="AudioStream" uid="uid://cv31a6s1u2i7q" path="res://Assets/Sound/MarioPipe.mp3" id="2_r1mkv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r1mkv"]
+size = Vector2(177, 119)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqocm"]
+size = Vector2(177, 16)
+
+[node name="Castle" type="Area2D"]
+script = ExtResource("1_ayoda")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.3376347, 0.15548038, 7.219613e-08, 1)
+polygon = PackedVector2Array(-90, -56, 88, -56, 88, 64, -88, 64)
+uv = PackedVector2Array(-186, -56, -8, -56, -8, 64, -184, 64)
+
+[node name="Pipe" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("2_r1mkv")
+bus = &"SFX"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-0.5, 9.5)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_r1mkv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -52)
+shape = SubResource("RectangleShape2D_dqocm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

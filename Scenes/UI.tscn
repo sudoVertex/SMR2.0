@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhleroilyta4h"]
+
+[ext_resource type="Script" uid="uid://ba1rmo1e4wl3f" path="res://ui.gd" id="1_w371h"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_w371h")
+
+[node name="You won" type="Label" parent="."]
+visible = false
+offset_left = 411.0
+offset_top = 25.0
+offset_right = 701.0
+offset_bottom = 94.0
+theme_override_font_sizes/font_size = 50
+text = "You Won!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="Score" type="Label" parent="."]
+visible = false
+offset_left = 411.0
+offset_top = 94.0
+offset_right = 724.0
+offset_bottom = 235.0
+theme_override_font_sizes/font_size = 50
+text = "your score is score"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
